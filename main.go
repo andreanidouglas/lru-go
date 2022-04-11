@@ -94,10 +94,8 @@ func (lru *LRU) set(key int32, value string) {
         node := Node { value: value, next: nil, prev: nil }
         var n *Node = nil
         if lru.size >= lru.capacity {
-                fmt.Printf("Adding [%d]%s -> %d\n", key, value, lru.size)
                 n = lru.ordered.replace_last_node(&node)
         } else {
-                fmt.Printf("Adding [%d]%s -> %d\n", key, value, lru.size)
                 n = lru.ordered.add_node_end(&node)
                 lru.size += 1
         }
@@ -132,9 +130,9 @@ func main () {
         lru.set(11, "11")
 
  //      lru.get(6)
- //      lru.get(3)
+        lru.get(3)
  //      lru.get(1)
- //      lru.get(7)
+        lru.get(7)
  //      lru.get(7)
         lru.get(11)
 
